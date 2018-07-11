@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        h2 {
+            margin: 0;
+        }
+        #box {
+            width: 500px;
+            background-color: #F2F2F2;
+            height: 100%;
+        }
+        .item {
+
+            position: relative;
+
+            width: 500px;
+            /*height: 80px;*/
+            background-color: #c0c0c0;
+        }
+        .item .itemi {
+            position: absolute;
+            display: block;
+            line-height:50px;
+            font-size: 30px;
+            font-style: normal;
+        }
+        .itemh2 {
+            width: 500px;
+            height: 50px;
+            text-indent: 30px;
+            line-height:50px;
+            background-color: red;
+        }
+        .itemdiv {
+            width: 500px;
+            background-color: blue;
+            display: none;
+        }
+        .current {
+            background-color: skyblue;
+            height: 50px;
+        }
+        .show {
+            display: block;
+        }
+
+        .xz {
+            transition: all 1s ease;
+            transform: rotate(90deg);
+        }
+
+    </style>
+</head>
+<body>
+    <div id="box">
+        <div class="item">
+            <i class="itemi">></i>
+            <h2 class="itemh2">我是王皓</h2>
+            <div class="itemdiv">
+                在前端技术快速变革的今天，layui 仍然坚持语义化的组织模式，甚至于模块理念都是采用类AMD组织形式，并非是有意与时代背道而驰。layui 认为以jQuery为核心的开发方式还没有到完全消亡的时候，而早期市面上基于jQuery的UI都普通做得差强人意，所以需要有一个新的UI去重新为这一领域注入活力，并采用一些更科学的架构方式。
+                因此准确地说，layui 更多是面向那些追求开发简单的前端工程师们，以及所有层次的服务端程序员。
+            </div>
+        </div>
+        <div class="item">
+            <i class="itemi">></i>
+            <h2 class="itemh2">我是王皓</h2>
+            <div class="itemdiv">
+                在前端技术快速变革的今天，layui 仍然坚持语义化的组织模式，甚至于模块理念都是采用类AMD组织形式，并非是有意与时代背道而驰。layui 认为以jQuery为核心的开发方式还没有到完全消亡的时候，而早期市面上基于jQuery的UI都普通做得差强人意，所以需要有一个新的UI去重新为这一领域注入活力，并采用一些更科学的架构方式。
+                因此准确地说，layui 更多是面向那些追求开发简单的前端工程师们，以及所有层次的服务端程序员。
+            </div>
+        </div>
+        <div class="item">
+            <i class="itemi">></i>
+            <h2 class="itemh2">我是王皓</h2>
+            <div class="itemdiv">
+                在前端技术快速变革的今天，layui 仍然坚持语义化的组织模式，甚至于模块理念都是采用类AMD组织形式，并非是有意与时代背道而驰。layui 认为以jQuery为核心的开发方式还没有到完全消亡的时候，而早期市面上基于jQuery的UI都普通做得差强人意，所以需要有一个新的UI去重新为这一领域注入活力，并采用一些更科学的架构方式。
+                因此准确地说，layui 更多是面向那些追求开发简单的前端工程师们，以及所有层次的服务端程序员。
+            </div>
+        </div>
+    </div>
+
+    <script>
+        var box = document.getElementById("box");
+        var items = box.children;
+        var itemh2 = document.getElementsByClassName("itemh2");
+        var itemi = document.getElementsByClassName("itemi");
+        var itemdiv = document.getElementsByClassName("itemdiv");
+        for(var i=0;i<itemh2.length;i++){
+            itemh2[i].index = i;
+            itemh2[i].onclick = function () {
+//                itemdiv[this.index].style.display = "block";
+                for(var j=0;j<itemh2.length;j++){
+                    itemh2[j].classList.remove("current");
+                    itemdiv[j].classList.remove("show");
+                    itemi[j].classList.remove("xz");
+                }
+                this.classList.add("current");
+                itemdiv[this.index].classList.add("show");
+                itemi[this.index].classList.add("xz");
+
+
+
+            }
+        }
+
+
+
+
+    </script>
+
+</body>
+</html>

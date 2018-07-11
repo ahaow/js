@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+        img {
+            vertical-align: top;
+        }
+        .box {
+            position: relative;
+            width: 310px;
+            height: 220px;
+            background-color: pink;
+            margin: 100px auto;
+        }
+        .content {
+            position: relative;
+            width: 310px;
+            height: 220px;
+            overflow: hidden;
+        }
+        .box ul,.box ol {
+            list-style: none;
+        }
+        .box .content ul {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 310px;
+            /*height: 1100px;*/
+            height:1320px;
+            background-color: blue;
+        }
+        .box .content ol {
+            position: absolute;
+            left: 50%;
+            margin-left:-60px;
+            bottom: 10px;
+            width: 120px;
+            height: 15px;
+        }
+        .box .content ol li {
+            float: left;
+            width: 15px;
+            height: 15px;
+            background-color: #fff;
+            border-radius: 50%;
+            margin: 0 4px;
+            text-align: center;
+            line-height:15px;
+            cursor: pointer;
+        }
+        .box .content ol li.current {
+            background-color: red;
+        }
+        .box .content span {
+
+            display: block;
+            width: 30px;
+            height: 30px;
+            font-size: 20px;
+            text-align: center;
+            line-height:30px;
+            background-color: #fff;
+            cursor: pointer;
+        }
+        .box .content #left {
+            position: absolute;
+            top:50%;
+            margin-top:-15px;
+            left: 0;
+        }
+        .box .content #right{
+            position: absolute;
+            top:50%;
+            margin-top:-15px;
+            right: 0;
+        }
+
+
+    </style>
+</head>
+<body>
+    <div class="box" id="box">
+        <div class="content">
+            <ul>
+                <li><img src="仿网易轮播图/images/1.jpg" alt=""></li>
+                <li><img src="仿网易轮播图/images/2.jpg" alt=""></li>
+                <li><img src="仿网易轮播图/images/3.jpg" alt=""></li>
+                <li><img src="仿网易轮播图/images/4.jpg" alt=""></li>
+                <li><img src="仿网易轮播图/images/5.jpg" alt=""></li>
+            </ul>
+            <ol>
+                <!--<li class="current"></li>-->
+                <!--<li></li>-->
+                <!--<li></li>-->
+                <!--<li></li>-->
+                <!--<li></li>-->
+            </ol>
+
+            <span id="left"><</span>
+            <span id="right">></span>
+        </div>
+
+    </div>
+    <script src="animate.js"></script>
+    <script>
+        var box = document.getElementById("box");
+        var content = box.children[0];
+        var ul = content.children[0];
+        var ol = content.children[1];
+        var left = content.children[2];
+        var right = content.children[3];
+        var height = content.offsetHeight;
+        console.log(height);
+        ul.appendChild(ul.children[0].cloneNode(true));
+        var ullis = ul.children;
+        console.log(ullis);
+        for(var i=0;i<ullis.length-1;i++){
+            var li = document.createElement("li");
+            ol.appendChild(li);
+        }
+        ol.children[0].className = "current";
+        var ollis = ol.children;
+        for(var i=0;i<ollis.length;i++){
+            ollis[i].index = i;
+            ollis[i].onclick = function () {
+                for(var j=0;j<ollis.length;j++){
+                    ollis[j].className = "";
+                }
+                this.className = "current";
+                animate(ul,{top:-this.index*height});
+                key = square = this.index;
+            }
+        }
+
+
+        var timer = null;
+        var key = 0;
+        var square = 0;
+        timer = setInterval(autoplay,2000)
+        function autoplay() {
+            key++;
+            if(key>ullis.length-1){
+                ul.style.top = 0;
+                key = 1;
+            }
+            animate(ul,{top:-key*height});
+
+            square++;
+            if(square>ollis.length-1){
+                square = 0;
+            }
+            for(var i=0;i<ollis.length;i++){
+                ollis[i].className = "";
+            }
+            ollis[square].className = "current";
+        }
+
+
+        box.onmouseover = function () {
+            clearInterval(timer);
+        };
+        box.onmouseout = function () {
+            timer = setInterval(autoplay, 1000);
+        };
+
+        left.onclick = function () {
+            key--;
+            if(key<0){
+                ul.style.top = -(ullis.length-1)*height + "px";
+                key = ollis.length-1;
+            }
+            animate(ul,{top:-key*height});
+            square--;
+            if(square<0){
+                square = ollis.length-1;
+            }
+            for(var i=0;i<ollis.length;i++){
+                ollis[i].className = "";
+            }
+            ollis[square].className = "current";
+        }
+
+        right.onclick = function () {
+            autoplay();
+        }
+    </script>
+</body>
+</html>

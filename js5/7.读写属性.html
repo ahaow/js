@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+    function Person(name,age,sex){
+        // 实例成员
+        this.name = name;
+        this.age = age;
+        this.sex = sex;
+    }
+    Person.prototype.say = function(){
+        console.log(this.name);
+    };
+    Person.prototype.type = "原型";
+
+    var p1 = new Person('ahao',18,'男');
+    console.log(p1.name)
+
+    // 不关心原型链 直接给对象增加一个test属性
+    p1.test = 'haha';
+    p1.type = 'i am type';
+    console.log(p1);
+    console.log(p1.type);  //先到对象本身上面去找  找不到就在原型上找
+
+
+</script>
+</body>
+</html>

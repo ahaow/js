@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<button id="btn"></button>
+<script>
+    // location 属性 href search hash
+    // location 方法 assign reload(刷新) replace
+
+    var btn = document.getElementById("btn");
+    btn.onclick = function(){
+        // reload 有一个参数 false 为f5刷新  为true的时候 强制刷新 ctrl+f5;
+        location.reload(true); //刷新
+
+        // 跳转 assign会记录历史，单击后跳转页面后退会出现 但一般用href
+        location.assign('http://www.baidu.com');
+
+        // 跳转 替换 不会记录历史
+        location.replace('http://www.baidu.com');
+
+    }
+
+
+</script>
+</body>
+</html>

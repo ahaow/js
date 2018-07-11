@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        div {
+            width: 100px;
+            height: 100px;
+            margin: 10px 0;
+            background-color: pink;
+        }
+    </style>
+</head>
+<body>
+
+<div class="demo txt"></div>
+<div class="demo txt"></div>
+<div></div>
+<div class="demo"></div>
+<div></div>
+
+
+    <script>
+        function getClass(classname) {
+            if(document.getElementsByClassName){
+                return document.getElementsByClassName(classname);
+            }
+            var arr = [];
+            var dom = document.getElementsByTagName("*");
+            for(var i=0;i<dom.length;i++){
+                var txtarr = dom[i].className.split(" ");
+                for(var j=0;j<txtarr.length;j++){
+                    if(txtarr[j] == classname){
+                        arr.push(dom[i]); // 我们要的是div;
+                    }
+                }
+            }
+            return arr;
+        }
+
+        console.log(getClass("txt").length);
+
+    </script>
+</body>
+</html>

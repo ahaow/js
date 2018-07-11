@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script>
+        window.onload = function(){
+            var btns = document.getElementsByTagName("button");
+            var inputs = document.getElementById("div").getElementsByTagName("input");
+            console.log(btns);
+            console.log(inputs);
+//            btns[0].onclick = function(){
+//                for(var i=0;i<inputs.length;i++){
+//                    inputs[i].checked = true;
+//                }
+//            };
+//            btns[1].onclick = function(){
+//                for(var i=0;i<inputs.length;i++){
+//                    inputs[i].checked = false;
+//                }
+//            }
+            btns[2].onclick = function(){
+                for(var i=0;i<inputs.length;i++){
+                    if(inputs[i].checked == true){
+                        inputs[i].checked = false;
+                    }else {
+                        inputs[i].checked = true;
+                    }
+                }
+            }
+
+//            全选和取消函数
+            function all(flag){
+                for(var i=0;i<inputs.length;i++){
+                    inputs[i].checked = flag;
+                }
+            }
+
+            btns[0].onclick = function(){
+                all(true)
+            }
+            btns[1].onclick = function(){
+                all(false)
+            }
+
+
+
+
+
+        }
+    </script>
+</head>
+<body>
+    <div id="top">
+        <button>全选</button>
+        <button>取消全选</button>
+        <button>反选</button>
+    </div>
+    
+    <div id="div">
+       <li>选项：<input type="checkbox"></li>
+       <li>选项：<input type="checkbox"></li>
+       <li>选项：<input type="checkbox"></li>
+       <li>选项：<input type="checkbox"></li>
+       <li>选项：<input type="checkbox"></li>
+       <li>选项：<input type="checkbox"></li>
+       <li>选项：<input type="checkbox"></li>
+    </div>
+</body>
+</html>

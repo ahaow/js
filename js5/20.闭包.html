@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+    <ul id="ul">
+        <li>111</li>
+        <li>111</li>
+        <li>111</li>
+        <li>111</li>
+    </ul>
+
+<script>
+    // 希望在另一个作用域，访问fn中的name这个局部变量
+    function fn(){
+        var name = "zs";
+        return function(){
+            return name;
+        };
+    }
+
+    var f = fn();
+    var n = f();
+    console.log(n);
+
+
+    var lis = document.getElementById("ul").children;
+    console.log(lis);
+    for(var i=0;i<lis.length;i++){
+
+        (function(index){
+            lis[i].onclick = function(){
+                alert(index)
+            }
+        })(i)
+
+
+    }
+
+
+</script>
+
+</body>
+</html>

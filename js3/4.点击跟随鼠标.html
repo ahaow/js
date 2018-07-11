@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        img {
+            position: absolute;
+            left: 0;
+            right: 0;
+        }
+
+    </style>
+</head>
+<body>
+    <img src="img/cloud.gif" alt="" id="img">
+
+
+</body>
+</html>
+<script>
+    var img = document.getElementById("img");
+
+    document.onclick = function (event) {
+        var event = event || window.event;
+        targetX = event.clientX - img.offsetWidth/2;
+        targetY = event.clientY - img.offsetHeight/2;
+    };
+
+
+    var leaderX = 0 , leaderY = 0,targetX = 0 , targetY = 0;
+    setInterval(function () {
+        leaderX = leaderX + ( targetX - leaderX )/10;
+        leaderY = leaderY + ( targetY - leaderY )/10;
+        img.style.left = leaderX + "px";
+        img.style.top = leaderY + "px";
+
+
+    },30)
+
+
+</script>

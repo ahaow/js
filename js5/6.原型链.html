@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+    <script>
+        function Person(name,age,sex){
+            // 实例成员
+            this.name = name;
+            this.age = age;
+            this.sex = sex;
+        }
+        Person.prototype.say = function(){
+            console.log(this.name);
+        }
+
+        var P1 = new Person('zs',18,'男');
+//        console.log(P1.toString());
+
+//        获取person的原型对象  Person.prototype  和   P1.__proto__;
+        var o = P1.__proto__;
+        console.log(o);
+        console.log(o.__proto__);
+        console.log(o.__proto__.__proto__);
+
+
+
+
+
+
+    </script>
+</body>
+</html>

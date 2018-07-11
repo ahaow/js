@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+    
+    function Fun(x) {
+        return function (y) {
+            console.log(x+y)
+        }
+    }
+
+    var obj = Fun(4); // function(){ console.log(x+y)};
+    obj(2);
+    
+</script>
+</body>
+</html>

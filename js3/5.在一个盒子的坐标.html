@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+        .demo {
+            width: 400px;
+            height: 400px;
+            background-color: pink;
+            margin: 100px;
+        }
+    </style>
+</head>
+<body>
+    <div class="demo">
+
+    </div>
+</body>
+</html>
+<script>
+    var demo = document.getElementsByTagName("div")[0];
+    demo.onclick = function (event) {
+        var event= event || window.event;
+        var x = event.clientX - this.offsetLeft;
+        var y = event.clientY - this.offsetTop;
+        this.innerHTML = "X坐标为:" + x + "Y坐标为:" + y;
+
+
+    }
+
+
+</script>

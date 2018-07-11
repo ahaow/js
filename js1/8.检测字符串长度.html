@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+    <script>
+        var txt = "what are you 弄啥嘞";
+        console.log(txt.length); //16
+
+        function getstrlength(str) {
+            var len = 0; // 存储总长度
+            var c = 0;  // 存储每一个编码
+            for(var i=0;i<str.length;i++){
+                c = str.charCodeAt(i);
+                if(c>=0 && c<=127){
+                    len++;
+                }else {
+                    len += 2;
+                }
+            }
+            return len;
+        }
+
+        console.log(getstrlength(txt)); // 19  汉字占2个字符
+
+    </script>
+</body>
+</html>

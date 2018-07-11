@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+    <button id="btn"></button>
+<script>
+
+    document.getElementById("btn").addEventListener('click',btnclick,false);
+    function btnclick(){
+        alert('hello');
+        this.removeEventListener("click",btnclick,false);
+    }
+    function addEventListener(ele,eventName,callback){
+        if(ele.addEventListener){
+            ele.addEventListener(eventName,callback,false)
+        }else if(ele.attachEvent){
+            ele.attachEvent('on'+eventName,callback);
+        }else {
+            ele['on'+eventName] = callback;
+        }
+    }
+
+
+</script>
+</body>
+</html>

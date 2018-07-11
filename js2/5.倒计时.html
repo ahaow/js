@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        #demo {
+            color: red;
+        }
+    </style>
+    <script>
+        window.onload = function () {
+
+            var demo = document.getElementById("demo");
+            var endTime = new Date("2017/12/12 17:30:00");
+
+            setInterval(clock,1000); //开启定时器
+
+            function clock() {
+                var nowTime = new Date();
+//                console.log(nowTime.getTime()); //获得毫秒数
+                var second = parseInt((endTime.getTime()-nowTime.getTime()) / 1000);
+//                用将来的毫秒数 - 现在的毫秒数 / 1000 得到秒数  除不断，所以取整数
+//                console.log(second);
+
+//                天数 = 秒数 / 3600 / 24
+                var day = parseInt(second / 3600 / 24);
+                console.log(day);
+
+//                小时
+                var house = parseInt(second / 3600 % 24);
+                console.log(house);
+
+//                分钟
+                var m = parseInt(second / 60 % 60);
+                console.log(m);
+
+//                秒数
+                var s = parseInt(second % 60);
+                console.log(s);
+
+                day < 10 ? day="0"+day : day;
+                house < 10 ? house="0"+house : house;
+                m < 10 ? m="0"+m : m;
+                s < 10 ? s="0"+s : s;
+
+
+                demo.innerHTML = "距离抢购的时间还剩下:" + day + "天" + house + "时" + m + "分" + s + "秒";
+
+            }
+
+
+
+
+        }
+
+    </script>
+</head>
+<body>
+    <div id="demo">
+
+    </div>
+
+
+</body>
+</html>

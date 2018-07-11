@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+    <script>
+        var arr = [1,3,5];
+        console.log(arr.length);
+        arr.push(7,9); //把 7,9放在数组的后面
+        console.log(arr); // [1,3,5,7,9]
+        arr.unshift(0);
+        console.log(arr); // [0,1,3,5,7,9]
+
+//      ---------------------------------
+
+        var demo = [1,23,45,6];
+        demo.pop();
+        console.log(demo)
+        demo.shift();
+        console.log(demo);
+
+//        ------------------ 连接
+        var a = [1,2,3];
+        console.log(demo.concat(a));
+
+//        ----------------- 把数组转化为字符串
+        var txt = ['aa','bb','cc'];
+        console.log(txt.join("-"));
+
+//        把字符串转化为数组
+        var txt1 = "aa,bb,cc";
+        console.log(txt1.split(","))
+
+
+    </script>
+
+</body>
+</html>

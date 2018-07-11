@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+    function Person() {
+        this.name = "ahao";
+        this.age = 18;
+    }
+
+    function Student(){
+        this.score = 60;
+    }
+
+    // 原型继承 --- 直接设置原型
+    Student.prototype = new Person();
+    Student.prototype.constructor = Student;
+
+    var s1 = new Student();
+    console.log(s1);
+
+
+
+
+
+
+</script>
+</body>
+</html>

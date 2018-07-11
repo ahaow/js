@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script>
+        window.onload = function () {
+            var div1 = document.getElementById("div1").innerHTML;
+
+            var div2 = document.getElementById("div2").innerHTML;
+            console.log(div1);
+            console.log(div2);
+            var text = div1.concat(div2);
+            console.log(text);
+            var btn1 = document.getElementById("btn1");
+            btn1.onclick = function () {
+                this.nextElementSibling.innerHTML = text;
+            }
+        }
+
+
+    </script>
+</head>
+<body>
+    <div id="div1">my name is ahao</div>
+    <div id="div2">my name is ada</div>
+    <button id="btn1">concat()</button> <span></span> <br>
+    <button id="btn2">slice()</button> <span></span> <br>
+</body>
+</html>

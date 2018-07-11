@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+    <script>
+        // 对象和对象之间
+        var wjl = {
+            name:'王健林',
+            age: 60,
+            money: 10000000,
+            car:['玛莎拉蒂','宾利',],
+            houses:['大大别墅','大别墅'],
+            play:function(){
+                console.log('......玩');
+            }
+        }
+
+
+        var wsc = {
+            name: '王思聪',
+            age:30
+        }
+
+        for(var key in wjl){
+            if(wsc[key]) continue;
+            wsc[key] = wjl[key];
+        }
+        console.log(wsc);
+
+        // 把一个对象的成员赋值给另一个对象
+        // 把obj1 的成员赋值给 obj2;
+        function extend (obj1,obj2){
+            for(var key in obj1){
+                if(obj2[key]) continue;
+                obj2[key] = obj1[key];
+            }
+        }
+    </script>
+
+</body>
+</html>

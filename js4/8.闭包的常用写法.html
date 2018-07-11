@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+    function outFun() {
+        var num = 10;
+        function inFun() {
+            console.log(num);
+        }
+        return inFun; // 返回的是函数体
+    }
+
+    // 另一种写法
+//    function outFun() {
+//        var num = 10;
+//        return function () {
+//            console.log(num);
+//        }
+//         // 返回的是函数体
+//    }
+
+    console.log(outFun());
+    var demo = outFun();
+    console.log(demo);
+    demo();
+
+
+</script>
+</body>
+</html>

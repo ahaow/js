@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+    // 组合继承： 原型继承 + 借用构造函数继承
+
+    function Person(name,age) {
+        this.name = name;
+        this.age = age;
+    }
+    Person.prototype.say = function(){
+        console.log(this);
+    }
+
+    function Student(name,age,score){
+        Person.call(this,name,age);
+        this.score = score;
+    }
+
+    Student.prototype = new Person();
+    Student.prototype.constructor = Student;
+
+    var s1 = new Student('ahao',18,60);
+    console.log(s1);
+
+
+
+
+
+
+
+</script>
+</body>
+</html>

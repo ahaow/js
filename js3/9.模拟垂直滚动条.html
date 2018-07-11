@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        .box {
+            width: 300px;
+            height: 500px;
+            border: 1px solid red;
+            margin: 100px;
+            position: relative;
+            overflow: hidden;
+        }
+        .content {
+            position: absolute;
+            top: 0;
+            left: 0;
+            padding-right: 20px;
+            height: auto;
+        }
+        .scroll {
+            width: 20px;
+            height: 100%;
+            position: absolute;
+            top: 0;
+            right: 0;
+            background-color: #ccc;
+        }
+        .bar {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100px;
+            background-color: red;
+            cursor: pointer;
+            border-radius: 10px;
+        }
+
+    </style>
+</head>
+<body>
+
+    <div class="box" id="box">
+        <div class="content">
+            文字内容文字内容文字内容文字内容文字内容文字内容文字内容文字内容文字内容文字内容文字内容文字内容文字内容
+            文字内容文字内容文字内容文字内容文字内容文字内容文字内容文字内容文字内容文字内容文字内容文字内容文字内容
+            文字内容文字内容文字内容文字内容文字内容文字内容文字内容文字内容文字内容文字内容文字内容文字内容文字内容
+            文字内容文字内容文字内容文字内容文字内容文字内容文字内容文字内容文字内容文字内容文字内容文字内容文字内容
+            文字内容文字内容文字内容文字内容文字内容文字内容文字内容文字内容文字内容文字内容文字内容文字内容文字内容
+            文字内容文字内容文字内容文字内容文字内容文字内容文字内容文字内容文字内容文字内容文字内容文字内容文字内容
+            文字内容文字内容文字内容文字内容文字内容文字内容文字内容文字内容文字内容文字内容文字内容文字内容文字内容
+            文字内容文字内容文字内容文字内容文字内容文字内容文字内容文字内容文字内容文字内容文字内容文字内容文字内容
+            文字内容文字内容文字内容文字内容文字内容文字内容文字内容文字内容文字内容文字内容文字内容文字内容文字内容
+            文字内容文字内容文字内容文字内容文字内容文字内容文字内容文字内容文字内容文字内容文字内容文字内容文字内容
+            文字内容文字内容文字内容文字内容文字内容文字内容文字内容文字内容文字内容文字内容文字内容文字内容文字内容
+            文字内容文字内容文字内容文字内容文字内容文字内容文字内容文字内容文字内容文字内容文字内容文字内容文字内容
+            文字内容文字内容文字内容文字内容文字内容文字内容文字内容文字内容文字内容文字内容文字内容文字内容文字内容
+            文字内容文字内容文字内容文字内容文字内容文字内容文字内容文字内容文字内容文字内容文字内容文字内容文字内容
+            文字内容文字内容文字内容文字内容文字内容文字内容文字内容文字内容文字内容文字内容文字内容文字内容文字内容
+            文字内容文字内容文字内容文字内容文字内容文字内容文字内容文字内容文字内容文字内容文字内容文字内容文字内容
+        </div>
+        <div class="scroll">
+            <div class="bar"></div>
+        </div>
+    </div>
+    <script>
+        var box = document.getElementById("box");
+        var content = box.children[0];
+        var scroll = box.children[1];
+        var bar = scroll.children[0];
+
+
+//        滚动条长度计算公式：（容器的高度 / 内容的高度 * 容器的高度 ）
+        var barHeight = box.offsetHeight / content.offsetHeight * box.offsetHeight;
+        bar.style.height = barHeight + "px";
+
+//        拖动红色盒子
+        startScroll(bar,content);
+        function startScroll(obj,target) {
+            obj.onmousedown = function (event) {
+                console.log(666);
+                var event = event || window.event;
+                var t = event.clientY - this.offsetTop; // 红色盒子距离父盒子的距离;
+                var that = this;
+                document.onmousemove = function (event) {
+                    var event = event || window.event;
+                    var barTop = event.clientY - t;
+                    if(barTop < 0){
+                        barTop = 0;
+                    }else if (barTop > box.offsetHeight - bar.offsetHeight){
+                        barTop = box.offsetHeight - bar.offsetHeight;
+                    }else {
+//                        内容盒子要移动距离 （内容盒子 - 大盒子） / （大盒子高度 - 红色盒子高度） * 红色盒子移动的数值
+                        target.style.top = - (content.offsetHeight - box.offsetHeight) / (box.offsetHeight - bar.offsetHeight) * barTop + "px";
+                        
+                    }
+                    that.style.top = barTop + "px";
+
+                    window.getSelection ? window.getSelection().removeAllRanges() : document.selection.empty();
+                }
+
+            };
+            document.onmouseup = function () {
+                document.onmousemove = null;
+            }
+        }
+
+    </script>
+
+
+</body>
+</html>

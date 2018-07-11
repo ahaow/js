@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+    <script>
+        // 构造函数 一般函数名第一个字母大写
+        // 构造对象的函数
+        function Student(name,age,subject,score){
+            this.name = name;
+            this.age = age;
+            this.subject = subject;
+            this.score = score;
+//            this.say = function(){
+//                console.log('大家好，我是'+this.name);
+//            }
+        }
+
+//        通过给构造函数的原型对象，给对象添加成员
+        Student.prototype.say = function(){
+            console.log('大家好，我是'+this.name);
+        };
+
+        Student.prototype.type = "哈哈";
+
+        // 静态成员
+        Student.item = "i am item";
+
+
+        //        每个构造函数都有一个constructor  来自于原型
+        console.log(Student.prototype.constructor == Student);  // true;
+
+
+        // new 作用
+        // 1.在内存中创建一个空对象
+        // 2.让构造函数的this.指向刚刚创建的对象
+        // 3.执行构造函数（一般情况下，通过this设置对象的成员）;
+        // 4.返回对象
+        var s1 = new Student('ahao',18,'语文',100);
+        var s2= new Student('ada',18,'it',60);
+
+        // 通过构造函数得到的实例对象内部包含一个指向构造函数的 prototype对象的指针 __proto__;
+        console.log(Student.prototype == s1.__proto__); // true;
+
+
+
+//        console.log(s1.say === s2.say);  // false p1的say和p2的say在内存中的位置不同
+
+
+        console.log(s1.say === s2.say);  // true 当方法写在person的原型里面 p1的say和p2的say在内存中的位置就一样了
+
+
+
+
+
+    </script>
+</body>
+</html>

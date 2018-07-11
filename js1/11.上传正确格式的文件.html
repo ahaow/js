@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+    <input type="file" name="" id="File"><span></span>
+    <script>
+        var file = document.getElementById("File");
+        file.onchange = function () {
+            var path = file.value;
+            var suxxif = path.substr(path.lastIndexOf(".")).toUpperCase();  //所有转换为大写
+            alert(suxxif);
+            if(suxxif == ".JPG" || suxxif == ".PNG"){
+                this.nextElementSibling.innerHTML = "格式正确";
+            }else {
+                this.nextElementSibling.innerHTML = "格式不正确";
+            }
+
+
+        }
+
+
+    </script>
+</body>
+</html>
